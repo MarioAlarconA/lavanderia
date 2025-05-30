@@ -11,7 +11,7 @@ class User(db.Model):
     password = db.Column(db.String(255), nullable= False)
     rol = db.Column(db.String(20), default="empleado")
     state = db.Column(db.String(50), default="activo")
-    created_at = db.Column(db.Datetime, default= datetime.now())
+    created_at = db.Column(db.DateTime, default= datetime.now())
 
 
     #Relaciones inversas

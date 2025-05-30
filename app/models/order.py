@@ -7,9 +7,9 @@ class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     client_id = db.Column(db.Integer, db.ForeignKey('clients.id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    created_at = db.Column(db.Datetime, default=datetime.now())
-    estimated_delivery_date = db.Column(db.Datetime, nullable=False)
-    real_delivery_date = db.Column(db.Datetime, nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.now())
+    estimated_delivery_date = db.Column(db.DateTime, nullable=False)
+    real_delivery_date = db.Column(db.DateTime, nullable=False)
     state = db.Column(db.String(20), default="recibido")
 
     total = db.Column(db.Integer, nullable=False)
