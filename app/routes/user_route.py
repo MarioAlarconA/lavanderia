@@ -20,7 +20,7 @@ def create_user():
         return jsonify({"error": "El correo ya esta regisatrado"})
     
     password_hash = generate_password_hash(password)
-    new_user = User(name=name, email=email, password=password_hash)
+    new_user = User(name=name, email=email, password=password_hash, rol=rol)
     db.session.add(new_user)
     db.session.commit()
 

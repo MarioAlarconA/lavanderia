@@ -24,17 +24,13 @@ def create():
 def search_by_name():
     name = request.args.get("name")
     clients = search_client_by_name(name)
-    #Betty la Fea
-    """ data = []
-    for client in clients:
-        data.append(client.todict()) """
-    #Betty la Bonita
+    
     data = [client.to_dict() for client in clients]
     return jsonify(data), 200
 
 @client_bp.route("/search/phone", methods=["GET"])
 def search_by_phone():
-    phone = request.args.get("phone")
+    phone = request.args.get("phone") 
     client = search_client_by_phone(phone)
     if not client:
         return jsonify({"error": "Cliente no encontrade :/"}), 400
