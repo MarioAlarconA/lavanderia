@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, TextInput, Pressable, Alert, Platform } from 'react-native';
 import { useState } from 'react';
-import { API_URL } from './api';
+import { API_URL } from '../api';
 import { useNavigation } from '@react-navigation/native';
 
 

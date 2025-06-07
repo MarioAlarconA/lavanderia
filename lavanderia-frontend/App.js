@@ -1,13 +1,13 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import CreateClient from './Create_Client_View';
+import CreateClient from './client_module/Create_Client_View';
 import CreateUser from './Create_User_View';
 import Login from './Login';
-import UpdateClient from './Update_Client_View';
-import Home from './Home';
-import DeleteClient from './Delete_Client';
-import SearchClient from './Search_Client';
+import UpdateClient from './client_module/Update_Client_View';
+import Home from './client_module/Home';
+import DeleteClient from './client_module/Delete_Client';
+import SearchClient from './client_module/Search_Client';
 const Stack = createStackNavigator();
 
 export function MyStack() {

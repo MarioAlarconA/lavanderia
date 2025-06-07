@@ -27,7 +27,7 @@ export default function UpdateClient() {
 
     try {
       await axios.put(
-        `https://f2rrdchq-5000.usw3.devtunnels.ms/clients/update/${client.id}`,
+        `https://3p175n7f-5000.usw3.devtunnels.ms/clients/update/${client.id}`,
         {
           name,
           address,
