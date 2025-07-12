@@ -9,6 +9,8 @@ import Home from './client_module/Home';
 import DeleteClient from './client_module/Delete_Client';
 import SearchClient from './client_module/Search_Client';
 import CreateOrder from './order_module/CreateOrder'
+
+
 const Stack = createStackNavigator();
 
 export function MyStack() {
