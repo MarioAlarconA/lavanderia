@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text,  ScrollView, TouchableOpacity, TextInput, StyleSheet, KeyboardAvoidingView, Platform, } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, TextInput, StyleSheet, KeyboardAvoidingView, Platform, } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Picker } from '@react-native-picker/picker';
 
@@ -24,9 +24,8 @@ export default function CreateOrder() {
     services: [{ ...defaultService }],
   };
 
-  const [order, setOrder] = useState({ garments: [defaultGarment], total: 0 });
+  const [order, setOrder] = useState({ garments: [defaultGarment] });
 
-  useEffect(() => calculateTotal(), [order.garments]);
 
   const addGarment = () =>
     setOrder(p => ({ ...p, garments: [...p.garments, { ...defaultGarment }] }));
@@ -57,17 +56,18 @@ export default function CreateOrder() {
     setOrder({ ...order, garments: g });
   };
 
-  const calculateTotal = () => {
-    const total = order.garments.reduce((sum, g) => {
-      const gTotal = g.services.reduce((sSum, s) => {
-        const q = parseInt(s.quantity);
-        const qty = !isNaN(q) && q > 0 ? q : 1;
-        return sSum + s.price * qty;
-      }, 0);
-      return sum + gTotal;
-    }, 0);
-    setOrder(p => ({ ...p, total }));
+  const getTotal = () => {
+    const garmentTotals = order.garments.map(g =>
+      g.services.reduce((acc, s) => {
+        const qty = parseInt(s.quantity) || 1
+        return acc + s.price * qty;
+      }, 0)
+    )
+    const grandTotal = garmentTotals.reduce((a, b) => a + b, 0)
+    return { garmentTotals, grandTotal }
   };
+
+  const { garmentTotals, grandTotal } = getTotal();
 
   return (
     <SafeAreaView style={styles.container}>
@@ -153,14 +153,17 @@ export default function CreateOrder() {
 
               <TouchableOpacity
                 style={[styles.botoncito, { alignSelf: 'flex-start', marginTop: 5 }]}
-                onPress={() => addService(gi)}
-              >
+                onPress={() => addService(gi)}>
                 <Text style={styles.btnText}>+ Agregar Servicio</Text>
               </TouchableOpacity>
+
+              <Text style={[styles.itemText, { marginTop: 10, fontWeight: 'bold' }]}>
+                Subtotal prenda: ${garmentTotals[gi]}
+              </Text>
             </View>
           ))}
 
-          <Text style={styles.total}>Total: ${order.total}</Text>
+          <Text style={styles.total}>Total: ${grandTotal}</Text>
         </ScrollView>
       </KeyboardAvoidingView>
     </SafeAreaView>
