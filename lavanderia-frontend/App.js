@@ -8,6 +8,7 @@ import UpdateClient from './client_module/Update_Client_View';
 import Home from './client_module/Home';
 import DeleteClient from './client_module/Delete_Client';
 import SearchClient from './client_module/Search_Client';
+import CreateOrder from './order_module/CreateOrder'
 const Stack = createStackNavigator();
 
 export function MyStack() {
@@ -21,6 +22,7 @@ export function MyStack() {
         <Stack.Screen name="Home" component={Home} options={{ headerShown: false }}/>
         <Stack.Screen name="Eliminar Cliente" component={DeleteClient} options={{ headerShown: false }}/>
         <Stack.Screen name="Buscar Cliente" component={SearchClient} options={{ headerShown: false }}/>
+        <Stack.Screen name="Crear Orden" component={CreateOrder} options={{ headerShown: false }}/>
 
       </Stack.Navigator>
     </NavigationContainer>

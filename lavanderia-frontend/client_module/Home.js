@@ -18,19 +18,23 @@ export default function Home({navigation}) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Clientes</Text>
+      <Text style={styles.title}>Lavanderia</Text>
 
       <View style={styles.buttonRow}>
         <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Crear Cliente')}>
-          <Text style={styles.textButton}>Crear</Text>
+          <Text style={styles.textButton}>Crear Cliente</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Buscar Cliente')}>
-          <Text style={styles.textButton}>Buscar</Text>
+          <Text style={styles.textButton}>Buscar Cliente</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Eliminar Cliente')}>
-          <Text style={styles.textButton}>Eliminar</Text>
+          <Text style={styles.textButton}>Eliminar Cliente</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Crear Orden')}>
+          <Text style={styles.textButton}>Crear Orden</Text>
         </TouchableOpacity>
       </View>
 
